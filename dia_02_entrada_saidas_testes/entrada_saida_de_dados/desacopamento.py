@@ -19,3 +19,7 @@ print(fruta, frutas)
 first_letter, *letters = 'palavras'
 
 print(first_letter.upper() + ''.join(letters))
+
+nome_e_nascimento = [("Felps", "México"), ("João", "Brasil")]
+for nome, pais in nome_e_nascimento:
+    print(nome, pais)
