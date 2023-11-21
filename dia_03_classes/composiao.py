@@ -22,9 +22,10 @@ class Pessoa:
             self.fan = fan
 
     def __str__(self):
-        return f"""
-        {self.nome} - possui {self.saldo_na_conta} reais em sua conta.
-        """
+        if (self.ventilador):
+            return f"{self.nome} - possui um ventilador."
+        else:
+            return f"{self.nome} - não possui um ventilador."
 
 
 liquidificador_vermelho = Liquidificador_Encapsulamento(
