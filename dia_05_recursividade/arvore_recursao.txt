@@ -1,0 +1,3 @@
+De olho na dica👀: desenhe todas as recursões do problema até chegar aos casos base e some as complexidades! Fique de olho nas proporções! Se cada subproblema é O(n) e você criou um para cada elemento da sua entrada de tamanho n, você tem aí uma complexidade O(n * n), ou seja, uma complexidade quadrática. Se, por outro lado, a cada subproblema você dividiu o tamanho do problema original por dois, você gerará log n subproblemas. Se cada um desses custa O(n), você teria uma complexidade O(n* log n)
+
+A forma de traduzir a lógica da árvore de recursão para uma notação puramente matemática se chama Teorema Mestre! Não é o nosso escopo por agora, ok? Mas fique à vontade para pesquisar a respeito e nos trazer todas as perguntas, se quiser!
