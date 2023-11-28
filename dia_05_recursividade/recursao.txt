@@ -1,0 +1,8 @@
+Funções recursivas com Python (ou qualquer linguagem de programação) são funções que chamam a si mesmas de maneira direta ou indireta. Infelizmente, não há nenhum benefício em termos de desempenho ao usar funções recursivas em Python, já que laços podem resolver o problema com mais eficiência. Porém, funções recursivas podem ser mais intuitivas para o programador quando um problema pode ser dividido em problemas menores de mesmo tipo.
+
+Call stack // Pilha
+Sempre que invocamos uma função, dados do seu escopo interno (como variáveis e parâmetros) precisam ser salvos em algum local. Além disso, também precisamos saber quando a função retorna um valor para que o programa continue a seguir o seu fluxo. Tudo isso é gerenciado pela Call Stack (pilha de chamada ou pilha de execução).  
+
+Exemplo
+
+De forma simples e direta, funciona assim: quando meu programa está em execução e encontra uma chamada de função, ele pausa temporariamente o que estava fazendo e vai até o código interno da função para realizar sua execução. Após a execução, a função precisa saber como retornar o programa para o local onde ele parou antes da chamada para a execução. Então, após o retorno da função, o programa sabe como resumir o código partindo exatamente de onde a função retornou.

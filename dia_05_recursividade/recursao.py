@@ -60,4 +60,17 @@ def find_box(list_box: List[Caixa], index: int = 0) -> Caixa:
     return find_box(list_box, index)
 
 
-print(find_box(caixas))
+# print(find_box(caixas))
+
+
+def countdown_exemple_two(start: int = 10, end: int = 0) -> int:
+    # Caso Base
+    print(start)
+    if start <= end:
+        return start
+    # Caso Recursivo
+
+    return countdown_exemple_two(start - 1)
+
+
+countdown_exemple_two()
