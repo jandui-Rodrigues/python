@@ -1,3 +1,6 @@
+from typing import List
+from collections import namedtuple
+
 # Iterativa
 
 
@@ -30,4 +33,31 @@ def somaRecursive(n):
         return n + somaRecursive(n - 1)
 
 
-print(somaRecursive(4))
+# print(somaRecursive(4))
+
+Caixa = namedtuple("Caixa", ["tem_chave", "porta"])
+
+caixas: List[Caixa] = [
+    Caixa(False, 0),
+    Caixa(False, 0),
+    Caixa(False, 3),
+    Caixa(False, 5),
+    Caixa(True, 1),
+    Caixa(False, 6),
+]
+
+
+def find_box(list_box: List[Caixa], index: int = 0) -> Caixa:
+    # Caso base
+    if len(list_box) <= 1:
+        return Caixa(False)
+    # Caso base
+    caixa = list_box[index]
+    if caixa.tem_chave:
+        return caixa
+    # Caso recursivo
+    index += 1
+    return find_box(list_box, index)
+
+
+print(find_box(caixas))
