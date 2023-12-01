@@ -1,3 +1,6 @@
+import sys
+
+
 """Perceba que temos uma coleção de valores
 e operações que atuam sobre estes valores,
 de acordo com o que foi definido pelo TAD."""
@@ -24,13 +27,25 @@ class ListaArray:
         # insere um elemento no índice informado
         self.data.insert(index, value)
 
+    def remove(self, index):
+        # removeremos o item, retornando-o
+        return self.data.pop(index)
+
+    def update(self, index, value):
+        self.data[index] = value
+
 
 # vamos inicializar e preencher uma estrutura de dados array
 array = ListaArray()
+array_memory_size = sys.getsizeof(array.data)
+print(array_memory_size)  # 56
 array.set(0, "Felipe")
 array.set(1, "Ana")
 array.set(2, "Shirley")
 array.set(3, "Miguel")
+
+array_memory_size = sys.getsizeof(array.data)
+print(array_memory_size)
 
 # para acessar um elemento do array, utilizamos seu índice
 print(array.get(0))  # saída: Felipe
