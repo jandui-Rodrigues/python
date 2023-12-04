@@ -1,7 +1,7 @@
 class Node:
-    def __init__(self, list) -> None:
-        self.list = list
+    def __init__(self, value) -> None:
+        self.value = value
         self.next = None
 
     def __str__(self):
-        return f" Node(list data = {self.list}), next = { self.next}"
+        return f" Node(value data = {self.value}), next = { self.next}"
