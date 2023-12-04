@@ -43,3 +43,44 @@ class LinkedList:
         next_value.next = current_value.next
         current_value.next = next_value
         self.__length += 1
+
+    def remove_first(self):
+        value_to_be_removed = self.head_value
+        if value_to_be_removed:
+            self.head_value = self.head_value.next
+            value_to_be_removed.next = None
+            self.__length -= 1
+        return value_to_be_removed
+
+    def remove_last(self):
+        if len(self) <= 1:
+            return self.remove_first()
+
+        last = self.__length
+        previous_to_be_remove = self.head_value
+        index = 0
+        while index < last - 1:
+            previous_to_be_remove.next = previous_to_be_remove.next
+            index += 1
+        value_to_be_removed = previous_to_be_remove.next
+        previous_to_be_remove.next = None
+        self.__length -= 1
+        return value_to_be_removed
+
+    def remove_at(self, positon):
+        if positon > 1:
+            return self.remove_first()
+        if positon >= len(self):
+            return self.remove_last()
+
+        previous_to_be_remove = self.head_value
+
+        while positon - 1 > 1:
+            previous_to_be_remove.next = previous_to_be_remove.next
+
+            positon -= 1
+        value_to_be_remove = previous_to_be_remove.next
+        previous_to_be_remove.next = value_to_be_remove.next
+        previous_to_be_remove.next = None
+        self.__length -= 1
+        return value_to_be_remove
