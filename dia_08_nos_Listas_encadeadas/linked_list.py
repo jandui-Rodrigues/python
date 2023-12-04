@@ -4,15 +4,15 @@ from node import Node
 class LinkedList:
     def __init__(self) -> None:
         self.head_value = 0
-        self.__length = 0
+        self.__length: int = 0
 
     def __str__(self) -> str:
         return f"LinkedList(len={self.__length}, value={self.head_value})"
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.__length
 
-    def insert_first(self, value):
+    def insert_first(self, value) -> None:
         first_value = Node(value)
         first_value.next = self.head_value
         self.head_value = first_value
@@ -84,3 +84,18 @@ class LinkedList:
         previous_to_be_remove.next = None
         self.__length -= 1
         return value_to_be_remove
+
+    def get_element_at(self, position):
+        value_returned = None
+        value_to_be_returned = self.head_value
+
+        if value_to_be_returned:
+            while position > 0 and value_to_be_returned.next:
+                value_to_be_returned = value_to_be_returned.next
+                position -= 1
+            if value_to_be_returned:
+                value_returned = Node(value_to_be_returned.value)
+        return value_returned
+
+    def is_empty(self):
+        return not self.__length
