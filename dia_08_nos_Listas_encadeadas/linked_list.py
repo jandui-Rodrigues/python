@@ -3,7 +3,7 @@ from node import Node
 
 class LinkedList:
     def __init__(self) -> None:
-        self.head_value = 0
+        self.head_value = None
         self.__length: int = 0
 
     def __str__(self) -> str:
@@ -27,6 +27,7 @@ class LinkedList:
 
         while current_value.next:
             current_value = current_value.next
+
         current_value.next = last_value
         self.__length += 1
 
@@ -67,23 +68,21 @@ class LinkedList:
         self.__length -= 1
         return value_to_be_removed
 
-    def remove_at(self, positon):
-        if positon > 1:
+    def remove_at(self, position):
+        if position < 1:
             return self.remove_first()
-        if positon >= len(self):
+        if position >= len(self):
             return self.remove_last()
 
-        previous_to_be_remove = self.head_value
-
-        while positon - 1 > 1:
-            previous_to_be_remove.next = previous_to_be_remove.next
-
-            positon -= 1
-        value_to_be_remove = previous_to_be_remove.next
-        previous_to_be_remove.next = value_to_be_remove.next
-        previous_to_be_remove.next = None
+        previous_to_be_removed = self.head_value
+        while position > 1:
+            previous_to_be_removed = previous_to_be_removed.next
+            position -= 1
+        value_to_be_removed = previous_to_be_removed.next
+        previous_to_be_removed.next = value_to_be_removed.next
+        value_to_be_removed.next = None
         self.__length -= 1
-        return value_to_be_remove
+        return value_to_be_removed
 
     def get_element_at(self, position):
         value_returned = None
@@ -99,3 +98,20 @@ class LinkedList:
 
     def is_empty(self):
         return not self.__length
+
+
+if __name__ == "__main__":
+    linked_list = LinkedList()
+
+    print(linked_list.is_empty())
+    linked_list.insert_first(1)
+    print(linked_list)
+
+    linked_list.insert_first(2)
+    linked_list.insert_first(5)
+    print(
+        linked_list
+    )
+    print(linked_list.get_element_at(0))
+    print(linked_list.get_element_at(1))
+    print(linked_list.get_element_at(2))
