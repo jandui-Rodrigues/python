@@ -9,7 +9,15 @@ class LinkDouble:
         self.__length = 0
 
     def __str__(self) -> str:
-        return f"len={self.__length}, H={self.head.value} T={self.tail.value}"
+        str_items = ""
+        element = self.head
+        for i in range(len(self) + 1):
+            str_items += str(element.value)
+            element = element.next
+            if i + 1 <= len(self):
+                str_items += ", "
+
+        return "LinkDouble(" + str_items + ")"
 
     def __len__(self):
         return self.__length
@@ -26,14 +34,13 @@ class LinkDouble:
 
         self.__length += 1
 
-    def inset_last(self, value):
+    def insert_last(self, value):
         current = self.head
         if current is None:
             return self.insert_first(value)
         new_tail = DoubleNode(value)
         self.tail.next = new_tail
         new_tail.previous = self.tail
-        new_tail.next = self.head
         self.tail = new_tail
         self.__length += 1
 
@@ -53,6 +60,27 @@ class LinkDouble:
         current.next.previous = new_value
         self.__length += 1
 
+    def remove_first(self):
+        value_to_be_removed = self.head
+        if value_to_be_removed:
+            self.head = self.head.next
+            self.head.previous = None
+            value_to_be_removed.next = None
+            self.__length -= 1
+        return value_to_be_removed
+
+    def remove_last(self):
+        if len(self) <= 1:
+            return self.remove_first()
+        value_to_remove = self.tail
+        previous_to_remove = value_to_remove.previous
+        previous_to_remove.next = None
+        self.tail.previous = None
+        self.tail = previous_to_remove
+        self.__length -= 1
+
+        return value_to_remove
+
     def get_element_at(self, position):
         value_returned = None
         value_to_be_returned = self.head
@@ -70,6 +98,6 @@ if __name__ == "__main__":
     listed = LinkDouble()
     listed.insert_first(1)
     listed.insert_first(2)
-    listed.inset_last(10)
+    listed.insert_last(10)
     listed.insert_at(5, 1)
-    print(listed.get_element_at(1))
+    print(listed)
